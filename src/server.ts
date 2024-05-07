@@ -15,12 +15,17 @@ const start = async () => {
   await payload.init({
     secret: process.env.PAYLOAD_SECRET,
     express: app,
-    onInit: async () => {
-      payload.logger.info(`Payload Admin URL: ${payload.getAdminURL()}`)
-    },
+    // onInit: async () => {
+    //   payload.logger.info(`Payload Admin URL: ${payload.getAdminURL()}`)
+    // },
   })
 
   // Add your own express routes here
+  const router = express.Router()
+
+  router.get("/admin", (req, res) => {
+    res.redirect("/admin")
+  })
 
   app.listen(port, () => {
     console.log(`Server listening on port ${port}`)
