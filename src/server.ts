@@ -27,6 +27,8 @@ const start = async () => {
     res.redirect("/admin")
   })
 
+  app.use("/api", router)
+
   app.listen(port, () => {
     console.log(`Server listening on port ${port}`)
   })
